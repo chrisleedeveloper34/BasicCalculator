@@ -1,0 +1,33 @@
+﻿body {
+    display: flex;
+    align-items: flex-start;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 60%;
+    min-width: 250px;
+}
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 100%;
+    cursor: pointer;
+}
+.button {
+    display: flex;
+    flex: 0 1 25%;
+    justify-content: center;
+    align-items: center;
+}
+.result {
+    /*justify-content: flex-end;*/
+    width: 350px;
+}
+.zero {
+    flex: 0 1 50%;
+}
+.clear {
+    flex: 0 1 75%;
+}

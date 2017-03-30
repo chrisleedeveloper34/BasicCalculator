@@ -1,0 +1,46 @@
+﻿@model float?
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <script src="~/Scripts/Calculator.js"></script>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Index", "Calc", FormMethod.Post, new { name="calculator" }))
+        {
+            @Html.Hidden("received", Model != null)
+            <div class="container">
+                <input readonly="readonly" class="result" name="query" id="query" type="text" value="@Model" />
+                <div class="buttons">
+                    <span class="button clear" onclick="calculator.query.value=''">C</span>
+                    <span class="button operator" onclick="addOperator('/')">/</span>
+                    <span class="button number" onclick="addNumber('7')">7</span>
+                    <span class="button number" onclick="addNumber('8')">8</span>
+                    <span class="button number" onclick="addNumber('9')">9</span>
+                    <span class="button operator" onclick="addOperator('*')">*</span>
+                    <span class="button number" onclick="addNumber('4')">4</span>
+                    <span class="button number" onclick="addNumber('5')">5</span>
+                    <span class="button number" onclick="addNumber('6')">6</span>
+                    <span class="button operator" onclick="addOperator('-')">-</span>
+                    <span class="button number" onclick="addNumber('1')">1</span>
+                    <span class="button number" onclick="addNumber('2')">2</span>
+                    <span class="button number" onclick="addNumber('3')">3</span>
+                    <span class="button operator" onclick="addOperator('+')">+</span>
+                    <span class="button number zero" onclick="addNumber('0')">0</span>
+                    <span class="button number point" onclick="addNumber('.')">.</span>
+                    <input class="button operator" type="submit" value="=" />
+                </div>
+                <br />
+            </div>
+        }
+    </div>
+</body>
+</html>
