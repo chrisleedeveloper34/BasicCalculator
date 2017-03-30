@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <title></title>
     <link rel="stylesheet" type="text/css" href="~/Content/style.css" />
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
     <script src="~/Scripts/Calculator.js"></script>
 </head>
 <body>
@@ -18,9 +19,9 @@
         {
             @Html.Hidden("received", Model != null)
             <div class="container">
-                <input readonly="readonly" class="result" name="query" id="query" type="text" value="@Model" />
+                <input class="result" name="query" id="query" type="text" value="@Model" />
                 <div class="buttons">
-                    <span class="button clear" onclick="calculator.query.value=''">C</span>
+                    <span class="button clear" id="clear">C</span>
                     <span class="button operator" onclick="addOperator('/')">/</span>
                     <span class="button number" onclick="addNumber('7')">7</span>
                     <span class="button number" onclick="addNumber('8')">8</span>

@@ -22,32 +22,22 @@ namespace BasicCalculator.Controllers
                 ModelState.AddModelError("error", "query cannot be empty");
                 return View();
             }
-            // parse query to get numbers and operators, spaces added in javascript
-            string[] expression = query.Split(' ');
-            if (expression.Length != 3)
-            {
-                ModelState.AddModelError("error", "error in query");
-                return View();
-            }
-            float fNum;
-            float sNum;
-            if (!float.TryParse(expression[0], out fNum) || !float.TryParse(expression[2], out sNum))
-            {
-                ModelState.AddModelError("error", "invalid expression");
-                return View();
-            }
-            char[] oper = expression[1].ToCharArray();
-            float result = Calculate.DoWork(fNum, sNum, oper[0]);
 
             // nCalc way to get the result but I felt this is cheating
-            //Expression e = new Expression(query);
-            //float result = 0;
-            //var eval = e.Evaluate();
-            //if (eval != null)
-            //{
-            //    result = Convert.ToSingle(eval);
-            //}
-
+            Expression e = new Expression(query);
+            float result = 0;
+            try
+            {
+                var eval = e.Evaluate();
+                if (eval != null)
+                {
+                    result = Convert.ToSingle(eval);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("error", ex.Message);
+            }
             return View(result);
         }
     }
